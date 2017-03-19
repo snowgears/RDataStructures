@@ -14,22 +14,30 @@ queue <- function() {
     
     # data is a list which stores the queue data.
     # Initalized te first element to NA
-    rtrn$data <- c(NA)
+    rtrn$data <- vector()
+    rtrn$data[1] <- NA
     
     return(rtrn);
 }
 
 
 print.queue <- function(inqueue) {
-    queue_idx = inqueue$head:inqueue$tail
+    if (inqueue$head == inqueue$tail)
+        # if head and tail are the same, there is 1 element
+        queue_idx = inqueue$head
+    else
+        # generate range of data in the queue
+        queue_idx = inqueue$head:(inqueue$tail-1)
     print(inqueue$data[queue_idx])
 }
 
 
 push.queue <- function(inqueue, item) {
     inqueue$data[inqueue$tail] <- item
+    
     inqueue$tail <- inqueue$tail + 1
     inqueue$length <- inqueue$length + 1
+    
     return(inqueue)
 }
 

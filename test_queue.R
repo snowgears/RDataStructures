@@ -5,7 +5,7 @@ source('queue.R')
 a <- queue()
 
 # inserting values
-print("Inserting values 1 to 9")
+cat("Inserting values 1 to 9")
 a <- push.queue(a, 1)
 a <- push.queue(a, 2)
 a <- push.queue(a, 3)
@@ -17,3 +17,26 @@ a <- push.queue(a, 8)
 a <- push.queue(a, 9)
 
 print(a)
+
+cat("\nExpect head = 1 and tail = 10\n")
+print(a$head)
+print(a$tail)
+print(a$length)
+
+cat("\nPoping first value")
+cat("Expect head = 2 and tail = 10 after pop\n")
+tmp <- pop.queue(a)
+print(a$head)
+print(a$tail)
+print(a$length)
+
+cat("\nPoping all values\n")
+for (i in 1:8) {
+    tmp <- pop.queue(a)
+}
+cat("Expecting head = 10 and tail = 10 after all pops\n")
+print(a$head)
+print(a$tail)
+print(a$length)
+
+print(a$data[10])
