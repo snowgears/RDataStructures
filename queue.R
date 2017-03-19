@@ -21,8 +21,8 @@ queue <- function() {
 
 
 print.queue <- function(inqueue) {
-    for (i in inqueue$head:inqueue$tail)
-        print(inqueue$data[i])
+    queue_idx = inqueue$head:inqueue$tail
+    print(inqueue$data[queue_idx])
 }
 
 
@@ -33,7 +33,6 @@ push.queue <- function(inqueue, item) {
     return(inqueue)
 }
 
-#eval.parent(substitute(x<-value))
 
 pop.queue <- function(inqueue) {
     element <- inqueue$data[inqueue$head]
