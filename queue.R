@@ -1,7 +1,7 @@
 # ECS 145 Project
 # Queue Implamentation
 
-queue <- function(input) {
+queue <- function() {
     rtrn <- list()
     class(rtrn) <- "queue"
     
@@ -9,14 +9,26 @@ queue <- function(input) {
     rtrn$head <- 1
     rtrn$tail <- 1
     
+    # Length tracks the size of the queue
+    rtrn$length <- 1
+    
     # data is a list which stores the queue data.
     # Initalized te first element to NA
-    rtrn$data[[1]] <- NA
+    rtrn$data <- c(NA)
     
     return(rtrn);
 }
 
+
 print.queue <- function(inqueue) {
     for (i in inqueue$head:inqueue$tail)
-        print(inqueue$data[[i]])
+        print(inqueue$data[i])
+}
+
+
+push.queue <- function(inqueue, item) {
+    inqueue$data[inqueue$tail] <- item
+    inqueue$tail <- inqueue$tail + 1
+    inqueue$length <- inqueue$length + 1
+    return(inqueue)
 }
