@@ -1,46 +1,35 @@
 
-# storage is in a matrix, say m, one row per node of the tree; a link i 
+# a matrix is used for storage one row per node of the tree; a link i 
 # in the tree means the vector m[i,] = (u,v,w); u and v are the left and 
 # right links, and w is the stored value; null links have the value NA; 
-# the matrix is referred to as the list (m,nxt,inc), where m is the 
-# matrix, nxt is the next empty row to be used, and inc is the number of 
-# rows of expansion to be allocated when the matrix becomes full 
+# the matrix is referred to as the list (m,nxt), where m is the 
+# matrix, nxt is the next empty row to be used
 
 # initializes a storage matrix, with initial stored value firstval 
 newbintree <- function()
 {
-   m <- matrix(rep(NA,3),nrow = 1, ncol =3)
+   mat <- matrix(rep(NA,3),nrow = 1, ncol =3)
 
    #since tree is initialized but empty we say that nxt is 0 
       #so that when push is called the first node is 1
-      #bing bing bing bing bong
 
-   return(list(mat=m,nxt=0))
+   return(list(mat=mat,nxt=0))
 }
 
 push.bintree <-function(tree,val)
 {
-   # root <- tree$m[1,3]
-   # ## do nothing 
-   # if(val == root)
-   # {
-   #    return(tree)
-   # }
-
-
    tree$nxt <- tree$nxt + 1
    # print(tree$nxt)
    #expand the tree sicne we are adding new node in 
-   if(tree$nxt > nrow(tree$m))
+   if(tree$nxt > nrow(tree$mat))
    {
-      print("Expanding the tree bing bing bing bong")
-      tree$m <- rbind(tree$m,matrix(rep(NA,3),nrow=1,ncol=3))
+      tree$mat <- rbind(tree$mat,matrix(rep(NA,3),nrow=1,ncol=3))
    }
       
 
    #store the position in which the new node will be stored
    newpos <- tree$nxt
-   print(newpos)   
+   #print(newpos)   
 
 
    level <- 1
@@ -48,7 +37,7 @@ push.bintree <-function(tree,val)
         #storing root
     if( newpos == 1)
     {
-      tree$m[newpos,3]<-val
+      tree$mat[newpos,3]<-val
       return(tree)
     }
 
@@ -57,47 +46,47 @@ push.bintree <-function(tree,val)
       while(TRUE)
       {
          ##do nothing--no storage bc that value already exists
-         if(tree$m[level,3] == val )
+         if(tree$mat[level,3] == val )
          {
 
             tree$nxt <- tree$nxt - 1
-            tree$m <- tree$m[-newpos,]
+            tree$mat <- tree$mat[-newpos,]
             
             break
          }
 
 
          ##go right 
-         if(tree$m[level,3] < val )
+         if(tree$mat[level,3] < val )
          {
             dir <- 2
          }
 
          ##go left
-         if(tree$m[level,3] > val)
+         if(tree$mat[level,3] > val)
          {
             dir <- 1
          }
 
 
          ##if our index is NA then set it because whatever got inserted is its child
-         if(is.na(tree$m[level,dir]))
+         if(is.na(tree$mat[level,dir]))
          {
-            tree$m[newpos,3]<-val
-            tree$m[level,dir]<- newpos
+            tree$mat[newpos,3]<-val
+            tree$mat[level,dir]<- newpos
 
             break
 
          }
 
-         level <- tree$m[level,dir]
+         level <- tree$mat[level,dir]
          print(level)
 
 
 
       }
 
-   print(tree$m)
+   print(tree$mat)
    return(tree)
 }
 
@@ -113,20 +102,20 @@ push.bintree <-function(tree,val)
 #       otheridx<- 1
 #    }
 
-#             if(!is.na(tree$m[level,1]))
+#             if(!is.na(tree$mat[level,1]))
 #             {
-#                if( tree$m[level,1] == vallevel)
+#                if( tree$mat[level,1] == vallevel)
 #                {
-#                     if(!is.na(tree$m[vallevel,otheridx]))
+#                     if(!is.na(tree$mat[vallevel,otheridx]))
 #                      {
 #                         ##decrement because there will be less values in the matrix 
-#                          tree$m[level,1] <- tree$m[vallevel,otheridx]-1
+#                          tree$mat[level,1] <- tree$mat[vallevel,otheridx]-1
                   
               
 #                      }
 #                      else
 #                      {
-#                         tree$m[level,1] <- tree$m[vallevel,index]
+#                         tree$mat[level,1] <- tree$mat[vallevel,index]
 #                      }
 #                }
 #             }
@@ -142,12 +131,15 @@ pop.bintree <- function(tree,val)
    level <- 1
    vallevel<- 0
 
-   nodeList <- tree$m[,3]
+   #move all the values into a list
+   nodeList <- tree$mat[,3]
    print("Original list")
    print(nodeList)
-   while(level <= nrow(tree$m))
+
+   #search the tree for the value 
+   while(level <= nrow(tree$mat))
    {
-      if( tree$m[level,3] == val)
+      if( tree$mat[level,3] == val)
       {
                vallevel <- level
                break;
@@ -156,32 +148,35 @@ pop.bintree <- function(tree,val)
       level <- level+1
    }
 
+   #make sure that the value is in the tree
    if(vallevel != 0)
    {
+      #remove the value from the list 
       nodeList<-nodeList[-vallevel]
+      #take the new length
       listsize<-length(nodeList)
       print("Modified list")
       print(nodeList)
       print(listsize)
 
+         #initialize a new tree
          tree <- newbintree()
 
          level <- 1
+
+         #reinsert everything back into the tree
          while(level <= listsize)
          {
 
-            #store everythign back in 
             tree<-push.bintree(tree,nodeList[level])
 
             level<-level+1
          
          }
 
-         # tree$m <- tree$m[-vallevel,]
-         # tree$nxt <- tree$nxt-1
          
    }
-   # print(tree$m)
+   # print(tree$mat)
    return(tree)
 
 }
@@ -198,40 +193,3 @@ print.bintree <- function(hdidx,tree) {
 
 
 
-
-            # if(!is.na(tree$m[level,1]))
-            # {
-            #    if( tree$m[level,1] == vallevel)
-            #    {
-            #         if(!is.na(tree$m[vallevel,2]))
-            #          {
-            #             ##decrement because there will be less values in the matrix 
-            #              tree$m[level,1] <- tree$m[vallevel,2]-1
-                  
-              
-            #          }
-            #          else
-            #          {
-            #             tree$m[level,1] <- tree$m[vallevel,1]
-            #          }
-            #    }
-            # }
-
-            # if(!is.na(tree$m[level,2]))
-            # {
-
-            #    if(tree$m[level,2] == vallevel)
-            #    {
-            #       if(!is.na(tree$m[vallevel,1]))
-            #          {
-            #              tree$m[level,2] <- tree$m[vallevel,1]-1
-                  
-              
-            #          }
-            #       else
-            #       {
-            #             tree$m[level,2] <- tree$m[vallevel,2]
-            #       }
-                  
-            #    }
-            # }
