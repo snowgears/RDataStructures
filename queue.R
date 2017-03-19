@@ -32,3 +32,14 @@ push.queue <- function(inqueue, item) {
     inqueue$length <- inqueue$length + 1
     return(inqueue)
 }
+
+#eval.parent(substitute(x<-value))
+
+pop.queue <- function(inqueue) {
+    element <- inqueue$data[inqueue$head]
+    
+    eval.parent(substitute(inqueue$head <- inqueue$head + 1))
+    eval.parent(substitute(inqueue$length <- inqueue$length - 1))
+    
+    return(element)
+}
