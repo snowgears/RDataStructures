@@ -23,7 +23,7 @@ queue <- function() {
 
 print.queue <- function(inqueue) {
     if (inqueue$head == inqueue$tail)
-        # if head and tail are the same, there is 1 element
+        # if head and tail are the same, there is 1 no element
         queue_idx = inqueue$head
     else
         # generate range of data in the queue
@@ -43,10 +43,15 @@ push.queue <- function(inqueue, item) {
 
 
 pop.queue <- function(inqueue) {
-    element <- inqueue$data[inqueue$head]
-    
-    eval.parent(substitute(inqueue$head <- inqueue$head + 1))
-    eval.parent(substitute(inqueue$length <- inqueue$length - 1))
-    
-    return(element)
+    # Check if there is an element in queue
+    if (inqueue$length == 0) {
+        warning("Error: Queue of length 0")
+        stop()
+    }
+    else {
+        element <- inqueue$data[inqueue$head]
+        eval.parent(substitute(inqueue$head <- inqueue$head + 1))
+        eval.parent(substitute(inqueue$length <- inqueue$length - 1))
+        return(element)
+    }
 }
