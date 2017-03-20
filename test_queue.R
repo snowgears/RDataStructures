@@ -40,3 +40,24 @@ print(a$tail)
 print(a$length)
 
 print(a$data[10])
+
+cat("\nTesting push, pop, then push\n")
+b <- queue()
+
+b <- push.queue(b, 1)
+cat("\nfirst push\n");
+print(b$head)
+print(b$tail)
+print(b$length)
+
+tmp <- pop.queue(b)
+cat("\nfirst pop\n");
+print(b$head)
+print(b$tail)
+print(b$length)
+
+b <- push.queue(b, 2)
+cat("\nsecond push\n");
+print(b$head)
+print(b$tail)
+print(b$length)
