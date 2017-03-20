@@ -41,6 +41,7 @@ print(a$length)
 
 print(a$data[10])
 
+cat("\n=============================================")
 cat("\nTesting push, pop, then push\n")
 b <- queue()
 
@@ -61,3 +62,4 @@ cat("\nsecond push\n");
 print(b$head)
 print(b$tail)
 print(b$length)
+
