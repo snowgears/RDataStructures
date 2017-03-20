@@ -10,7 +10,7 @@ queue <- function() {
     rtrn$tail <- 1
     
     # Length tracks the size of the queue
-    rtrn$length <- 1
+    rtrn$length <- 0
     
     # data is a list which stores the queue data.
     # Initalized te first element to NA
