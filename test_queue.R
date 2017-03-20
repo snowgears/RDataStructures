@@ -5,7 +5,7 @@ source('queue.R')
 a <- queue()
 
 # inserting values
-cat("Inserting values 1 to 9")
+cat("Inserting values 1 to 9\n")
 a <- push.queue(a, 1)
 a <- push.queue(a, 2)
 a <- push.queue(a, 3)
@@ -29,6 +29,10 @@ tmp <- pop.queue(a)
 print(a$head)
 print(a$tail)
 print(a$length)
+
+cat("\nAttempting to print poped value in queue. Expected NA\n")
+print(a$data[1])
+
 
 cat("\nPoping all values\n")
 for (i in 1:8) {

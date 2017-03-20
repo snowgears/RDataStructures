@@ -50,6 +50,7 @@ pop.queue <- function(inqueue) {
     }
     else {
         element <- inqueue$data[inqueue$head]
+        eval.parent(substitute(inqueue$data[inqueue$head] <- NA))
         eval.parent(substitute(inqueue$head <- inqueue$head + 1))
         eval.parent(substitute(inqueue$length <- inqueue$length - 1))
         return(element)
