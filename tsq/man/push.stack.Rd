@@ -12,7 +12,7 @@ push.stack(inqueue, item)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{inqueue}{
+  \item{inqueue}{ Input
 %%     ~~Describe \code{inqueue} here~~
 }
   \item{item}{

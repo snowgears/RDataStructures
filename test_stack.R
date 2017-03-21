@@ -18,25 +18,22 @@ a <- push.stack(a, 9)
 
 print(a)
 
-cat("\nExpect head = 10 and tail = 1\n")
-print(a$head)
-print(a$tail)
+cat("\nExpect top = 10\n")
+print(a$top)
 print(a$length)
 
 cat("\nPopping first value")
-cat("Expect head = 9 and tail = 1 after pop\n")
+cat("Expect top = 9 after pop\n")
 tmp <- pop.stack(a)
-print(a$head)
-print(a$tail)
+print(a$top)
 print(a$length)
 
 cat("\nPopping all values\n")
 for (i in 1:8) {
     tmp <- pop.stack(a)
 }
-cat("Expecting head = 1 and tail = 1 after all pops\n")
-print(a$head)
-print(a$tail)
+cat("Expecting top = 1 after all pops\n")
+print(a$top)
 print(a$length)
 
 print(a)

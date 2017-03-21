@@ -2,9 +2,11 @@
 \alias{print.stack}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
+Prints stack.
 %%  ~~function to do ... ~~
 }
 \description{
+Prints stack.
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
@@ -12,7 +14,7 @@ print.stack(inqueue)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{inqueue}{
+  \item{inqueue}{ input stack.
 %%     ~~Describe \code{inqueue} here~~
 }
 }
@@ -42,6 +44,15 @@ print.stack(inqueue)
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
+# Initalize stack
+a <- stack()
+# Put items on stack
+a <- push.stack(a, 1)
+a <- push.stack(a, 2)
+a <- push.stack(a, 3)
+# Print stack
+print(a)
+
 ##---- Should be DIRECTLY executable !! ----
 ##-- ==>  Define data, use random,
 ##--	or do  help(data=index)  for the standard data sets.
