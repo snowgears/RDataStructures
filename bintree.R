@@ -297,10 +297,10 @@ pop.bintree <- function(tree,val)
 # pass in hdidx = 1 corresponding to root for first call
 print.bintree <- function(hdidx,tree) { 
    left <- tree$mat[hdidx,1] 
-   if (!is.na(left)) printtree(left,tree) 
+   if (!is.na(left)) print.bintree(left,tree) 
    print(tree$mat[hdidx,3]) 
    right <- tree$mat[hdidx,2] 
-   if (!is.na(right)) printtree(right,tree) 
+   if (!is.na(right)) print.bintree(right,tree) 
 } 
 
 
