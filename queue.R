@@ -1,10 +1,13 @@
 # ECS 145 Project
 # Queue Implamentation
 
-queue <- function() {
-    rtrn <- list()
-    class(rtrn) <- "queue"
+pop <- function(inqueue) UseMethod('pop')
+push <- function(inqueue, item) UseMethod('push')
 
+newqueue <- function() {
+    rtrn <- list()
+    class(rtrn) <- 'queue'
+    
     # Head and tail tracks position of the list
     rtrn$head <- 1
     rtrn$tail <- 1
@@ -18,7 +21,6 @@ queue <- function() {
 
     return(rtrn);
 }
-
 
 print.queue <- function(inqueue) {
     if (inqueue$head == inqueue$tail)

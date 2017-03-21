@@ -2,19 +2,19 @@
 
 source('stack.R')
 
-a <- stack()
+a <- newstack()
 
 # inserting values
 cat("Inserting values 1 to 9")
-push.stack(a, 1)
-push.stack(a, 2)
-push.stack(a, 3)
-push.stack(a, 4)
-push.stack(a, 5)
-push.stack(a, 6)
-push.stack(a, 7)
-push.stack(a, 8)
-push.stack(a, 9)
+push(a, 1)
+push(a, 2)
+push(a, 3)
+push(a, 4)
+push(a, 5)
+push(a, 6)
+push(a, 7)
+push(a, 8)
+push(a, 9)
 
 print(a)
 
@@ -24,13 +24,13 @@ print(a$length)
 
 cat("\nPopping first value\n")
 cat("Expect top = 9 after pop\n")
-tmp <- pop.stack(a)
+tmp <- pop(a)
 print(a$top)
 print(a$length)
 
 cat("\nPopping all values\n")
 for (i in 1:8) {
-    tmp <- pop.stack(a)
+    tmp <- pop(a)
 }
 cat("Expecting top = 1 after all pops\n")
 print(a$top)

@@ -1,7 +1,10 @@
 # ECS 145 Project
 # Stack Implamentation
 
-stack <- function() {
+pop <- function(instack) UseMethod('pop')
+push <- function(instack, item) UseMethod('push')
+
+newstack <- function() {
     rtrn <- list()
     class(rtrn) <- "stack"
 
