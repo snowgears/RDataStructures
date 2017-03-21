@@ -75,114 +75,226 @@ push.bintree <-function(tree,val)
             tree$mat[newpos,3]<-val
             tree$mat[level,dir]<- newpos
 
+
             break
 
          }
 
          level <- tree$mat[level,dir]
-         print(level)
+         # print(level)
 
 
 
       }
 
-   print(tree$mat)
+   # print(tree$mat)
    return(tree)
 }
 
+# level refers to the current child's level and prevlevel refers to its parent
+#dir refers to the direction traversed right (corresponding to 2) or left (corresponding to 1)
+promote <- function(  tree , level, prevlevel, dir )
+{
 
-# compareLevel <- function (tree,vallevel,level,index)
-# {
-#    if(index == 1)
-#    {
-#       otheridx<- 2
-#    }
-#    else
-#    {
-#       otheridx<- 1
-#    }
+   while(TRUE)
+   {
+      # print("At level ")
+      # print(level)
+      # print("Prev level ")
+      # print(prevlevel)
+      # print("Direciton traversed")
+      # print(dir)
 
-#             if(!is.na(tree$mat[level,1]))
-#             {
-#                if( tree$mat[level,1] == vallevel)
-#                {
-#                     if(!is.na(tree$mat[vallevel,otheridx]))
-#                      {
-#                         ##decrement because there will be less values in the matrix 
-#                          tree$mat[level,1] <- tree$mat[vallevel,otheridx]-1
-                  
-              
-#                      }
-#                      else
-#                      {
-#                         tree$mat[level,1] <- tree$mat[vallevel,index]
-#                      }
-#                }
-#             }
+      #       print("Right gets promoted")
+            tree$mat[prevlevel,3] <- tree$mat[level,3]
+            tree$mat[prevlevel,dir] <- tree$mat[prevlevel,dir]-1
+
+            # print(tree$mat[prevlevel,])
+
+            
+           
+
+            #go to right child if exists
+
+            if(!is.na(tree$mat[level,2])) 
+               {
+                   #store current as previous 
+                  prevlevel <- level
+                  level <- tree$mat[level,2]
+                  dir <- 2
+
+               }
+            #go to left child if exits 
+            else if(!is.na(tree$mat[level,1])) 
+               {
+                  #store current as previous 
+                  prevlevel <- level
+                  level <- tree$mat[level,1]
+                  dir <- 1
+               }
 
 
+            #bottom of the tree-- nothing left to promote 
+            else
+            {
+               # print("bottom of tree with ")
+               # print(tree$mat[level,3])
+               # print("Level")
+               # print(level)
+               # print("prevlevel")
+               # print(prevlevel)
+               tree$mat[prevlevel,dir] <- NA
+               # print(tree$mat)
+               #delete this we already promoted it
+               tree$mat <- tree$mat[-level,]
+               tree$nxt <- tree$nxt-1
+               return(tree)
+            }
+
+            
+
+            
 
 
-# }
+   }
+  
+
+}
+
+
+#uses the helper promote in order to bring children up once their parent is deleted
+#right child takes precedence over the left
+#dir corresponds to the direction taken (right or left) in order to get to the current node
+
+
 pop.bintree <- function(tree,val)
 {
    #traverse matrix to find the appropriate level
 
    level <- 1
-   vallevel<- 0
+   prevlevel<- 0
 
-   #move all the values into a list
-   nodeList <- tree$mat[,3]
-   print("Original list")
-   print(nodeList)
-
-   #search the tree for the value 
-   while(level <= nrow(tree$mat))
+   while(TRUE)
    {
-      if( tree$mat[level,3] == val)
+      # print("Top of loop")
+      #greater than so we go down right 
+      if( val > tree$mat[level, 3])
       {
-               vallevel <- level
-               break;
+         # print("Right traversal")
+         #  print("update prevlevel")
+
+         prevlevel <- level
+         dir <- 2
+         
+         level <- tree$mat[level,2]
+               #store the index of the previous level (need to maintain parent)
+
       }
 
-      level <- level+1
-   }
+      #less than so we go down left 
+      if ( val < tree$mat[level,3])
+      {
+         # print("Left traversal")
+         #       print("update prevlevel")
 
-   #make sure that the value is in the tree
-   if(vallevel != 0)
-   {
-      #remove the value from the list 
-      nodeList<-nodeList[-vallevel]
-      #take the new length
-      listsize<-length(nodeList)
-      print("Modified list")
-      print(nodeList)
-      print(listsize)
+         prevlevel <- level
 
-         #initialize a new tree
-         tree <- newbintree()
+         dir <- 1
 
-         level <- 1
+         level <- tree$mat[level,1]
+      }
 
-         #reinsert everything back into the tree
-         while(level <= listsize)
+      #found our value
+      if ( val == tree$mat[level, 3])
+      {
+
+            # print("Found val at level : ")
+            # print(level)
+            # print("Previous level :")
+            # print(prevlevel)
+
+
+            #go right -- right takes precedence 
+
+            if(!is.na(tree$mat[level,2]))
+             {
+
+                     
+                     
+                     #if(!is.na(tree$mat[prevlevel,1])) tree$mat[prevlevel,1] <- tree$mat[prevlevel,1]-1
+
+                     # print(tree$mat[prevlevel,])
+                     
+                     #store current as previous 
+                     prevlevel <- level
+
+                     #go to right child
+                     level <- tree$mat[level,2]
+
+
+
+
+
+
+                     #bring right child up
+                     tree <- promote(tree, level, prevlevel,2)
+                     #tree$mat <- tree$mat[-level,]
+                     break
+          
+            }
+
+           #go left--no right child
+
+            else if(!is.na(tree$mat[level,1]))
+             {
+                     
+                     # print(tree$mat[prevlevel,])
+
+                     #store current as previous 
+                     prevlevel <- level
+
+                     #go to left child
+                     level <- tree$mat[level,1]
+                     # print(tree$mat[prevlevel,])
+                     
+
+                     tree <- promote(tree, level, prevlevel, 1)
+                     
+                     break
+       
+
+                   
+               
+            }
+
+         #tree consists of one node
+         else
          {
+            # print("bottom of tree with ")
+            # print(tree$mat[level,3])
+            tree$mat[prevlevel,dir] <- NA
 
-            tree<-push.bintree(tree,nodeList[level])
+            #delete this we already promoted it
+            tree$mat <- tree$mat[-level,]
+            tree$nxt <- tree$nxt-1
+            return(tree)
 
-            level<-level+1
-         
          }
+      
 
-         
+      }
+
+
    }
-   # print(tree$mat)
+
+
    return(tree)
 
 }
 
 
 # print sorted tree via inorder traversal 
+# pass in hdidx = 1 corresponding to root for first call
 print.bintree <- function(hdidx,tree) { 
    left <- tree$mat[hdidx,1] 
    if (!is.na(left)) printtree(left,tree) 
