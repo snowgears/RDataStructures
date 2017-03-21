@@ -33,12 +33,10 @@ print.stack <- function(instack) {
 
 
 push.stack <- function(instack, item) {
-    instack$data[instack$top] <- item
+    eval.parent(substitute(instack$data[instack$top] <- item))
 
-    instack$top <- instack$top + 1
-    instack$length <- instack$length + 1
-
-    return(instack)
+    eval.parent(substitute(instack$top <- instack$top + 1))
+    eval.parent(substitute(instack$length <- instack$length + 1))
 }
 
 
