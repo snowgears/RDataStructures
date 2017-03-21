@@ -2,9 +2,11 @@
 \alias{push.queue}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
+Pushes item onto the queue.
 %%  ~~function to do ... ~~
 }
 \description{
+Pushes an item onto the queue and changes the position of tail and the length.
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
@@ -12,10 +14,10 @@ push.queue(inqueue, item)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{inqueue}{
+  \item{inqueue}{ Queue which we are inserting items.
 %%     ~~Describe \code{inqueue} here~~
 }
-  \item{item}{
+  \item{item}{ Item we want to insert.
 %%     ~~Describe \code{item} here~~
 }
 }
@@ -45,6 +47,15 @@ push.queue(inqueue, item)
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
+# Initalize the queue.
+a <- queue()
+# Insert items
+a <- queue(a, 1)
+a <- queue(a, 2)
+a <- queue(a, 3)
+# Check queue data directly
+print(a$data)
+
 ##---- Should be DIRECTLY executable !! ----
 ##-- ==>  Define data, use random,
 ##--	or do  help(data=index)  for the standard data sets.

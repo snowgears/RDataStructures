@@ -2,9 +2,12 @@
 \alias{queue}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
+    Creates a queue data structure.
 %%  ~~function to do ... ~~
 }
 \description{
+Initalizes a queue data structure. The queue is a FIFO data structure which supports
+two operations; push and pop.
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
@@ -37,6 +40,9 @@ queue()
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
+# Initalize queue
+a <- queue()
+
 ##---- Should be DIRECTLY executable !! ----
 ##-- ==>  Define data, use random,
 ##--	or do  help(data=index)  for the standard data sets.
