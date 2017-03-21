@@ -33,8 +33,10 @@ print.stack <- function(instack) {
 
 
 push.stack <- function(instack, item) {
+    # Insert item
     eval.parent(substitute(instack$data[instack$top] <- item))
 
+    # Update length and top
     eval.parent(substitute(instack$top <- instack$top + 1))
     eval.parent(substitute(instack$length <- instack$length + 1))
 }
@@ -47,9 +49,13 @@ pop.stack <- function(instack) {
         stop()
     }
     else {
+        # Take element at the top
         element <- instack$data[instack$top - 1]
 
+        # Set popped element to NA
         eval.parent(substitute(instack$data[instack$top - 1] <- NA))
+
+        # Update top and length
         eval.parent(substitute(instack$top<- instack$top - 1))
         eval.parent(substitute(instack$length <- instack$length - 1))
 

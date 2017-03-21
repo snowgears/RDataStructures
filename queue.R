@@ -4,19 +4,18 @@
 queue <- function() {
     rtrn <- list()
     class(rtrn) <- "queue"
-    
+
     # Head and tail tracks position of the list
     rtrn$head <- 1
     rtrn$tail <- 1
-    
     # Length tracks the size of the queue
     rtrn$length <- 0
-    
+
     # data is a list which stores the queue data.
     # Initalized te first element to NA
     rtrn$data <- vector()
     rtrn$data[1] <- NA
-    
+
     return(rtrn);
 }
 
@@ -33,12 +32,12 @@ print.queue <- function(inqueue) {
 
 
 push.queue <- function(inqueue, item) {
-    inqueue$data[inqueue$tail] <- item
-    
-    inqueue$tail <- inqueue$tail + 1
-    inqueue$length <- inqueue$length + 1
-    
-    return(inqueue)
+    # Insert item
+    eval.parent(substitute(inqueue$data[inqueue$tail] <- item))
+
+    # Update length and tail
+    eval.parent(substitute(inqueue$tail <- inqueue$tail + 1))
+    eval.parent(substitute(inqueue$length <- inqueue$length + 1))
 }
 
 
@@ -49,8 +48,13 @@ pop.queue <- function(inqueue) {
         stop()
     }
     else {
+        # take out element at the head
         element <- inqueue$data[inqueue$head]
+
+        # Update popped element to NA
         eval.parent(substitute(inqueue$data[inqueue$head] <- NA))
+
+        # Update length and head
         eval.parent(substitute(inqueue$head <- inqueue$head + 1))
         eval.parent(substitute(inqueue$length <- inqueue$length - 1))
         return(element)
