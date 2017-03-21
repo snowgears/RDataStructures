@@ -24,14 +24,11 @@ newstack <- function() {
 
 
 print.stack <- function(instack) {
-    if (instack$length == 0)
-        # if the length is 0, the stack is empty
-        stack_idx = instack$top
-    else
+    if (instack$length != 0) {
         # generate range of data in the stack
         stack_idx = 1:(instack$top - 1)
-
-      print(instack$data[stack_idx])
+        print(instack$data[stack_idx])
+    }
 }
 
 

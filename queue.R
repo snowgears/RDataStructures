@@ -1,13 +1,15 @@
 # ECS 145 Project
 # Queue Implamentation
 
+# Declare generic functions
 pop <- function(inqueue) UseMethod('pop')
 push <- function(inqueue, item) UseMethod('push')
+
 
 newqueue <- function() {
     rtrn <- list()
     class(rtrn) <- 'queue'
-    
+
     # Head and tail tracks position of the list
     rtrn$head <- 1
     rtrn$tail <- 1
@@ -22,14 +24,13 @@ newqueue <- function() {
     return(rtrn);
 }
 
+
 print.queue <- function(inqueue) {
-    if (inqueue$head == inqueue$tail)
-        # if head and tail are the same, there is 1 no element
-        queue_idx = inqueue$head
-    else
+    if (inqueue$head != inqueue$tail) {
         # generate range of data in the queue
         queue_idx = inqueue$head:(inqueue$tail-1)
-    print(inqueue$data[queue_idx])
+        print(inqueue$data[queue_idx])
+    }
 }
 
 
