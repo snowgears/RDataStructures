@@ -6,16 +6,16 @@ Prints stack.
 %%  ~~function to do ... ~~
 }
 \description{
-Prints stack.
+Prints the elements in the stack. If the stack is empty, than nothing is outputed.
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
-print.stack(inqueue)
+print.stack(instack)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{inqueue}{ input stack.
-%%     ~~Describe \code{inqueue} here~~
+  \item{instack}{ Input stack
+%%     ~~Describe \code{instack} here~~
 }
 }
 \details{
@@ -45,29 +45,15 @@ print.stack(inqueue)
 }
 \examples{
 # Initalize stack
-a <- stack()
-# Put items on stack
-a <- push.stack(a, 1)
-a <- push.stack(a, 2)
-a <- push.stack(a, 3)
-# Print stack
+a <- newstack()
+# Prints empty stack. Nothing is outputted
 print(a)
-
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
-
-## The function is currently defined as
-function (inqueue) 
-{
-    if (inqueue$head == inqueue$tail) 
-        stack_idx = inqueue$head
-    else stack_idx = (inqueue$head - 1):(inqueue$tail)
-    if (inqueue$head == 1 && inqueue$tail == 1) 
-        print(vector())
-    else print(inqueue$data[stack_idx])
-  }
-}
+# input some data.
+push(a, 1)
+push(a, 2)
+push(a, 3)
+# Prints out stack with data. Expected output: 1, 2 ,3
+print(a)
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
 \keyword{ ~kwd1 }% use one of  RShowDoc("KEYWORDS")

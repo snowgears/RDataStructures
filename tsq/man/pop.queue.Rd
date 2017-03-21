@@ -2,12 +2,9 @@
 \alias{pop.queue}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Pops the head of the queue.
 %%  ~~function to do ... ~~
 }
 \description{
-Takes in a queue and returns the head element. The element popped is then set to NA.
-The variables head and length are modified internally.
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
@@ -15,7 +12,7 @@ pop.queue(inqueue)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{inqueue}{ Queue to be popped.
+  \item{inqueue}{
 %%     ~~Describe \code{inqueue} here~~
 }
 }
@@ -45,18 +42,6 @@ pop.queue(inqueue)
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-# Initalize queue
-a <- queue()
-# Insert 1, 2, 3 into queue
-a <- queue(a, 1)
-a <- queue(a, 2)
-a <- queue(a, 3)
-# Pop the head element of queue
-x <- pop.queue(a)
-# Print value for x. Expected to be 1
-print(x)
-
-
 ##---- Should be DIRECTLY executable !! ----
 ##-- ==>  Define data, use random,
 ##--	or do  help(data=index)  for the standard data sets.

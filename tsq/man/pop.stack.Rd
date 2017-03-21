@@ -2,18 +2,22 @@
 \alias{pop.stack}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
+Pops the element on the top of the stack.
 %%  ~~function to do ... ~~
 }
 \description{
+Pops the element on the stack and sets the popped element to NA.
+If the stack is empty, a warning is issued and the function stops.
+Returns the value popped.
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
-pop.stack(inqueue)
+pop.stack(instack)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{inqueue}{
-%%     ~~Describe \code{inqueue} here~~
+  \item{instack}{ Input stack.
+%%     ~~Describe \code{instack} here~~
 }
 }
 \details{
@@ -42,20 +46,15 @@ pop.stack(inqueue)
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
-
-## The function is currently defined as
-function (inqueue) 
-{
-    element <- inqueue$data[inqueue$head]
-    eval.parent(substitute(inqueue$head <- inqueue$head - 1))
-    eval.parent(substitute(inqueue$length <- inqueue$length - 
-        1))
-    return(element)
-  }
-}
+# Create a stack
+a <- newstack()
+# Initalize some data
+push(a, 1)
+push(a, 2)
+push(a, 3)
+push(a, 4)
+# pop the stack. 
+pop(a) # prints 4
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
 \keyword{ ~kwd1 }% use one of  RShowDoc("KEYWORDS")

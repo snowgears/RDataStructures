@@ -1,5 +1,5 @@
-\name{push.queue}
-\alias{push.queue}
+\name{pop}
+\alias{pop}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
 %%  ~~function to do ... ~~
@@ -8,15 +8,12 @@
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
-push.queue(inqueue, item)
+pop(instack)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{inqueue}{
-%%     ~~Describe \code{inqueue} here~~
-}
-  \item{item}{
-%%     ~~Describe \code{item} here~~
+  \item{instack}{
+%%     ~~Describe \code{instack} here~~
 }
 }
 \details{
@@ -50,13 +47,8 @@ push.queue(inqueue, item)
 ##--	or do  help(data=index)  for the standard data sets.
 
 ## The function is currently defined as
-function (inqueue, item) 
-{
-    eval.parent(substitute(inqueue$data[inqueue$tail] <- item))
-    eval.parent(substitute(inqueue$tail <- inqueue$tail + 1))
-    eval.parent(substitute(inqueue$length <- inqueue$length + 
-        1))
-  }
+function (instack) 
+UseMethod("pop")
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

@@ -1,16 +1,14 @@
-\name{stack}
-\alias{stack}
+\name{newqueue}
+\alias{newqueue}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Stack Data Structure
 %%  ~~function to do ... ~~
 }
 \description{
-Initalizes a stack data strucutre.
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
-stack()
+newqueue()
 }
 %- maybe also 'usage' for other objects documented here.
 \details{
@@ -39,10 +37,6 @@ stack()
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-# Initalize stack
-a <- stack()
-
-
 ##---- Should be DIRECTLY executable !! ----
 ##-- ==>  Define data, use random,
 ##--	or do  help(data=index)  for the standard data sets.
@@ -51,7 +45,7 @@ a <- stack()
 function () 
 {
     rtrn <- list()
-    class(rtrn) <- "stack"
+    class(rtrn) <- "queue"
     rtrn$head <- 1
     rtrn$tail <- 1
     rtrn$length <- 0

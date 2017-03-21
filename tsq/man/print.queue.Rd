@@ -2,11 +2,9 @@
 \alias{print.queue}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Prints the queue data strcutre.
 %%  ~~function to do ... ~~
 }
 \description{
-Prints the values currently stored in the queue. If there are no elements in the queue, NA will be printed.
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
@@ -14,7 +12,7 @@ print.queue(inqueue)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{inqueue}{ Queue to be inputed.
+  \item{inqueue}{
 %%     ~~Describe \code{inqueue} here~~
 }
 }
@@ -44,15 +42,6 @@ print.queue(inqueue)
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-# Initalize queue.
-a <- queue()
-# insert 3 elements into queue.
-a <- queue.push(a, 1)
-a <- queue.push(a, 1)
-a <- queue.push(a, 1)
-# Print out queue. Expect (1, 1, 1)
-print(a)
-
 ##---- Should be DIRECTLY executable !! ----
 ##-- ==>  Define data, use random,
 ##--	or do  help(data=index)  for the standard data sets.
@@ -60,10 +49,10 @@ print(a)
 ## The function is currently defined as
 function (inqueue) 
 {
-    if (inqueue$head == inqueue$tail) 
-        queue_idx = inqueue$head
-    else queue_idx = inqueue$head:(inqueue$tail - 1)
-    print(inqueue$data[queue_idx])
+    if (inqueue$head != inqueue$tail) {
+        queue_idx = inqueue$head:(inqueue$tail - 1)
+        print(inqueue$data[queue_idx])
+    }
   }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
