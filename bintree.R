@@ -1,4 +1,7 @@
 
+
+pop <- function(tree) UseMethod('pop')
+push <- function(tree, val) UseMethod('push')
 # a matrix is used for storage one row per node of the tree; a link i 
 # in the tree means the vector m[i,] = (u,v,w); u and v are the left and 
 # right links, and w is the stored value; null links have the value NA; 
@@ -6,14 +9,18 @@
 # matrix, nxt is the next empty row to be used
 
 # initializes a storage matrix, with initial stored value firstval 
+
 newbintree <- function()
 {
-   mat <- matrix(rep(NA,3),nrow = 1, ncol =3)
-
+   rtrn <- list()
+   
+   class(rtrn) <- 'bintree'
+   rtrn$mat <- matrix(rep(NA,3),nrow = 1, ncol =3)
+   rtrn$nxt <- 0
    #since tree is initialized but empty we say that nxt is 0 
       #so that when push is called the first node is 1
 
-   return(list(mat=mat,nxt=0))
+   return(rtrn)
 }
 
 push.bintree <-function(tree,val)
@@ -157,16 +164,26 @@ pop.bintree <- function(tree)
 }
 
 
+printinorder<-function(root,tree)
+{
+   left <- tree$mat[root,1] 
+   if (!is.na(left)) printinorder(left,tree) 
+   print(tree$mat[root,3]) 
+   right <- tree$mat[root,2] 
+   if (!is.na(right)) printinorder(right,tree) 
 
+}
 
 # print sorted tree via inorder traversal 
-# pass in hdidx = 1 corresponding to root for first call
-print.bintree <- function(hdidx,tree) { 
-   left <- tree$mat[hdidx,1] 
-   if (!is.na(left)) print.bintree(left,tree) 
-   print(tree$mat[hdidx,3]) 
-   right <- tree$mat[hdidx,2] 
-   if (!is.na(right)) print.bintree(right,tree) 
+# pass in root = 1 corresponding to root for first call
+print.bintree <- function(tree) { 
+
+   level <- 1
+
+   printinorder(level,tree)
+
+  
+
 } 
 
 

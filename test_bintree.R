@@ -19,16 +19,31 @@ print(btree)
 print("Testing pop--Empyting out tree with pop")
 btree <- pop.bintree(btree)
 print(btree)
+print("Testing pop--Empyting out tree with pop")
+
 btree <- pop.bintree(btree)
 print(btree)
+
+print("Testing pop--Empyting out tree with pop")
+
 btree <- pop.bintree(btree)
 print(btree)
+
+print("Testing pop--Empyting out tree with pop")
+
 btree <- pop.bintree(btree)
 print(btree)
+
+print("Testing pop--Empyting out tree with pop")
+
 btree <- pop.bintree(btree)
 print(btree)
+print("Testing pop--Empyting out tree with pop")
+
 btree <- pop.bintree(btree)
 print(btree)
+print("Testing pop--Empyting out tree with pop")
+
 btree <- pop.bintree(btree)
 print(btree)
 
@@ -46,16 +61,31 @@ print(btree)
 print("Testing pop--Empyting out tree with pop")
 btree <- pop.bintree(btree)
 print(btree)
+print("Testing pop--Empyting out tree with pop")
+
 btree <- pop.bintree(btree)
 print(btree)
+
+print("Testing pop--Empyting out tree with pop")
+
 btree <- pop.bintree(btree)
 print(btree)
+
+print("Testing pop--Empyting out tree with pop")
+
 btree <- pop.bintree(btree)
 print(btree)
+
+print("Testing pop--Empyting out tree with pop")
+
 btree <- pop.bintree(btree)
 print(btree)
+print("Testing pop--Empyting out tree with pop")
+
 btree <- pop.bintree(btree)
 print(btree)
+print("Testing pop--Empyting out tree with pop")
+
 btree <- pop.bintree(btree)
 print(btree)
 
@@ -75,16 +105,31 @@ print(btree)
 print("Testing pop--Empyting out tree with pop")
 btree <- pop.bintree(btree)
 print(btree)
+print("Testing pop--Empyting out tree with pop")
+
 btree <- pop.bintree(btree)
 print(btree)
+
+print("Testing pop--Empyting out tree with pop")
+
 btree <- pop.bintree(btree)
 print(btree)
+
+print("Testing pop--Empyting out tree with pop")
+
 btree <- pop.bintree(btree)
 print(btree)
+
+print("Testing pop--Empyting out tree with pop")
+
 btree <- pop.bintree(btree)
 print(btree)
+print("Testing pop--Empyting out tree with pop")
+
 btree <- pop.bintree(btree)
 print(btree)
+print("Testing pop--Empyting out tree with pop")
+
 btree <- pop.bintree(btree)
 print(btree)
 
