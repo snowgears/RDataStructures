@@ -2,6 +2,7 @@
 \alias{pop.stack}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
+    pop.stack()
 %%  ~~function to do ... ~~
 }
 \description{

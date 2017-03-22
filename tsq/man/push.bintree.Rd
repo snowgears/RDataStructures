@@ -2,6 +2,7 @@
 \alias{push.bintree}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
+    push.bintree()
 %%  ~~function to do ... ~~
 }
 \description{

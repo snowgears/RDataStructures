@@ -2,6 +2,7 @@
 \alias{newbintree}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
+    newbintree()
 %%  ~~function to do ... ~~
 }
 \description{

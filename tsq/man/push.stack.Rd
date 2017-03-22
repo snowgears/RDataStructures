@@ -2,6 +2,7 @@
 \alias{push.stack}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
+    push.stack()
 %%  ~~function to do ... ~~
 }
 \description{

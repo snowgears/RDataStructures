@@ -2,6 +2,7 @@
 \alias{print.bintree}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
+    print.bintree()
 %%  ~~function to do ... ~~
 }
 \description{

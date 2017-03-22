@@ -2,6 +2,7 @@
 \alias{newstack}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
+    newstack()
 %%  ~~function to do ... ~~
 }
 \description{

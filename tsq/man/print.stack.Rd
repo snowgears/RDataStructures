@@ -2,6 +2,7 @@
 \alias{print.stack}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
+    print.stack()
 %%  ~~function to do ... ~~
 }
 \description{

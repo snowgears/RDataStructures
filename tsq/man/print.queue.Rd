@@ -2,6 +2,7 @@
 \alias{print.queue}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
+    print.queue()
 %%  ~~function to do ... ~~
 }
 \description{

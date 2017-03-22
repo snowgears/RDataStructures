@@ -2,6 +2,7 @@
 \alias{push.queue}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
+    push.queue()
 %%  ~~function to do ... ~~
 }
 \description{
