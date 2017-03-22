@@ -1,6 +1,6 @@
 #! /usr/bin/env Rscript
 
-source('/Users/sgrobelny/Desktop/bintree.R')
+source('bintree.R')
 
 btree <- newbintree()
 #initialized as per specs
