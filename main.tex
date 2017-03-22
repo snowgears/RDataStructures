@@ -200,6 +200,8 @@ The {\tt print()} operation simply takes the queue and prints it out. If the hea
 The {\tt push()} operation inserts an element to the end of the queue. The implementation is simple. We insert the element at index {\tt tail} and update the tail and length. Our vector is allowed to grow as needed, so there is no size constraints for overflows. There is no return type so the way the queue gets updated is by using {\tt eval.parent(substitute(...))} on the queue parameters.
 
 The {\tt pop()} operation is very similar, but instead we return the item at the index {\tt head}. We than update the head, length, and set the popped element to {\tt NA}. Note that since R does not support call by reference due to the functional nature of the language, so we can't easily update the head and the length. The way around this is to use {\tt eval.parent(substitute(...))}. This updates the queue even though we can't pass function parameters by reference. One thing to take note of is when the queue is empty. This means that the {\tt head} and {\tt tail} are in the same position, which gives use a queue with no elements. I needed to use an if statement to check if the length was $0$ to prevent popping an empty queue.
+\section{Importing the Library}
+The library will be names {\tt tsq}. The {\tt tsq} package will come as a {\tt .tar.gz} file. To install the package, run {\tt R CMD INSTALL -l /PATH/TO/R/DIR tsq.tar.gz} from the terminal. Once that is compleated, we can launch the R prompt and use the package with {\tt library(tsq)}. Note that the library path may not be set. If that is the case, than we need to run {\tt .libPaths('/PATH/TO/tsq\_package/')} in order to set the library path. 
 
 \begin{thebibliography}{9}
 
