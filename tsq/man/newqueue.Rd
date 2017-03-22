@@ -5,6 +5,7 @@
 %%  ~~function to do ... ~~
 }
 \description{
+Initalizes a queue.
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
@@ -15,6 +16,7 @@ newqueue()
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
+\item{rtrn}{Returns a list containing the queue data structure.}
 %%  ~Describe the value returned
 %%  If it is a LIST, use
 %%  \item{comp1 }{Description of 'comp1'}
@@ -37,24 +39,5 @@ newqueue()
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
-
-## The function is currently defined as
-function () 
-{
-    rtrn <- list()
-    class(rtrn) <- "queue"
-    rtrn$head <- 1
-    rtrn$tail <- 1
-    rtrn$length <- 0
-    rtrn$data <- vector()
-    rtrn$data[1] <- NA
-    return(rtrn)
-  }
+a <- newqueue()
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }% use one of  RShowDoc("KEYWORDS")
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

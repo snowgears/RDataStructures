@@ -5,6 +5,7 @@
 %%  ~~function to do ... ~~
 }
 \description{
+Prints the queue data structure. Only prints items which are still in the queue.
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
@@ -12,7 +13,7 @@ print.queue(inqueue)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{inqueue}{
+  \item{inqueue}{ Input queue.
 %%     ~~Describe \code{inqueue} here~~
 }
 }
@@ -42,20 +43,12 @@ print.queue(inqueue)
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
-
-## The function is currently defined as
-function (inqueue) 
-{
-    if (inqueue$head != inqueue$tail) {
-        queue_idx = inqueue$head:(inqueue$tail - 1)
-        print(inqueue$data[queue_idx])
-    }
-  }
+# Make new queue
+a <- newqueue()
+# Push items onto queue
+push(a, 1)
+push(a, 2)
+push(a, 3)
+# Print queue
+print(a)
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }% use one of  RShowDoc("KEYWORDS")
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

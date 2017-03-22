@@ -1,8 +1,8 @@
 # ECS 145 Project
 # Stack Implamentation
 
-pop <- function(instack) UseMethod('pop')
-push <- function(instack, item) UseMethod('push')
+pop <- function(inds) UseMethod('pop')
+push <- function(inds, item) UseMethod('push')
 
 newstack <- function() {
     rtrn <- list()
@@ -32,32 +32,32 @@ print.stack <- function(instack) {
 }
 
 
-push.stack <- function(instack, item) {
+push.stack <- function(inds, item) {
     # Insert item
-    eval.parent(substitute(instack$data[instack$top] <- item))
+    eval.parent(substitute(inds$data[inds$top] <- item))
 
     # Update length and top
-    eval.parent(substitute(instack$top <- instack$top + 1))
-    eval.parent(substitute(instack$length <- instack$length + 1))
+    eval.parent(substitute(inds$top <- inds$top + 1))
+    eval.parent(substitute(inds$length <- inds$length + 1))
 }
 
 
-pop.stack <- function(instack) {
-    if (instack$length == 0) {
+pop.stack <- function(inds) {
+    if (inds$length == 0) {
         # Check if stack is empty
         warning("Popping empty stack!")
         stop()
     }
     else {
         # Take element at the top
-        element <- instack$data[instack$top - 1]
+        element <- inds$data[inds$top - 1]
 
         # Set popped element to NA
-        eval.parent(substitute(instack$data[instack$top - 1] <- NA))
+        eval.parent(substitute(inds$data[inds$top - 1] <- NA))
 
         # Update top and length
-        eval.parent(substitute(instack$top<- instack$top - 1))
-        eval.parent(substitute(instack$length <- instack$length - 1))
+        eval.parent(substitute(inds$top<- inds$top - 1))
+        eval.parent(substitute(inds$length <- inds$length - 1))
 
         return(element)
     }

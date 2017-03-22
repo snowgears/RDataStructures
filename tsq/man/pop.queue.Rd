@@ -5,21 +5,23 @@
 %%  ~~function to do ... ~~
 }
 \description{
+Pops the item off the head of the queue and sets it to NA.
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
-pop.queue(inqueue)
+pop.queue(inds)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{inqueue}{
-%%     ~~Describe \code{inqueue} here~~
+  \item{inds}{ Input queue.
+%%     ~~Describe \code{inds} here~~
 }
 }
 \details{
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
+Returns item popped off the head of the queue.
 %%  ~Describe the value returned
 %%  If it is a LIST, use
 %%  \item{comp1 }{Description of 'comp1'}
@@ -42,29 +44,16 @@ pop.queue(inqueue)
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
-
-## The function is currently defined as
-function (inqueue) 
-{
-    if (inqueue$length == 0) {
-        warning("Error: Queue of length 0")
-        stop()
-    }
-    else {
-        element <- inqueue$data[inqueue$head]
-        eval.parent(substitute(inqueue$data[inqueue$head] <- NA))
-        eval.parent(substitute(inqueue$head <- inqueue$head + 
-            1))
-        eval.parent(substitute(inqueue$length <- inqueue$length - 
-            1))
-        return(element)
-    }
-  }
-}
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }% use one of  RShowDoc("KEYWORDS")
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+# Create queue
+a <- newqueue()
+# Insert items
+push(a, 1)
+push(a, 2)
+push(a, 3)
+# Pop off first item and print
+print(pop(a))
+# Print data structure
+print(a)
+#Repeat
+print(pop(a))
+print(a)

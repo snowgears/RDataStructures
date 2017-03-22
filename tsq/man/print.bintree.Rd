@@ -5,17 +5,15 @@
 %%  ~~function to do ... ~~
 }
 \description{
+Prints the bintree data structure. Prints the data in order from least to greatest.
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
-print.bintree(hdidx, tree)
+print.bintree(tree)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{hdidx}{
-%%     ~~Describe \code{hdidx} here~~
-}
-  \item{tree}{
+  \item{tree}{Input tree.
 %%     ~~Describe \code{tree} here~~
 }
 }
@@ -45,23 +43,12 @@ print.bintree(hdidx, tree)
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
-
-## The function is currently defined as
-function (hdidx, tree) 
-{
-    left <- tree$mat[hdidx, 1]
-    if (!is.na(left)) 
-        print.bintree(left, tree)
-    print(tree$mat[hdidx, 3])
-    right <- tree$mat[hdidx, 2]
-    if (!is.na(right)) 
-        print.bintree(right, tree)
-  }
+# Make tree
+a <- newbintree()
+# Push items in
+a <- push(a, 1)
+a <- push(a, 2)
+a <- push(a, 3)
+# Print
+print(a)
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }% use one of  RShowDoc("KEYWORDS")
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

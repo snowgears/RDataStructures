@@ -2,10 +2,10 @@
 \alias{newstack}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Constructs a stack data structure.
+%%  ~~function to do ... ~~
 }
 \description{
-Creats a stack data structure.
+Initalizes a stack.
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
@@ -16,6 +16,7 @@ newstack()
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
+\item{rtrn}{Returns a list containing the stack data structure.}
 %%  ~Describe the value returned
 %%  If it is a LIST, use
 %%  \item{comp1 }{Description of 'comp1'}
@@ -38,10 +39,5 @@ newstack()
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-# Creates stack data structure
 a <- newstack()
-
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }% use one of  RShowDoc("KEYWORDS")
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+}

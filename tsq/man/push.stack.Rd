@@ -2,22 +2,21 @@
 \alias{push.stack}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Pushes data onto the stack.
 %%  ~~function to do ... ~~
 }
 \description{
-Puts data onto the top of the stack. Data is appeneded to the stack. Noting is returned.
+Pushes item onto the top of the stack.
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
-push.stack(instack, item)
+push.stack(inds, item)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{instack}{ Input stack
-%%     ~~Describe \code{instack} here~~
+  \item{inds}{ Input stack
+%%     ~~Describe \code{inds} here~~
 }
-  \item{item}{ Item top be inserted
+  \item{item}{ Item to be put on the stack
 %%     ~~Describe \code{item} here~~
 }
 }
@@ -47,15 +46,12 @@ push.stack(instack, item)
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-# Initalize stack
+# Initalizes stack
 a <- newstack()
-# Insert some data
+# Input item onto the stack
 push(a, 1)
-push(a, 2)
-push(a, 3)
-# Pop the item on top of the stack. Expect 3 to be printed
-pop(a)
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }% use one of  RShowDoc("KEYWORDS")
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+push(a, 1000)
+# Print stack
+print(a)
+
+}

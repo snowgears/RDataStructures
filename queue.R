@@ -2,8 +2,8 @@
 # Queue Implamentation
 
 # Declare generic functions
-pop <- function(inqueue) UseMethod('pop')
-push <- function(inqueue, item) UseMethod('push')
+pop <- function(inds) UseMethod('pop')
+push <- function(inds, item) UseMethod('push')
 
 
 newqueue <- function() {
@@ -34,32 +34,32 @@ print.queue <- function(inqueue) {
 }
 
 
-push.queue <- function(inqueue, item) {
+push.queue <- function(inds, item) {
     # Insert item
-    eval.parent(substitute(inqueue$data[inqueue$tail] <- item))
+    eval.parent(substitute(inds$data[inds$tail] <- item))
 
     # Update length and tail
-    eval.parent(substitute(inqueue$tail <- inqueue$tail + 1))
-    eval.parent(substitute(inqueue$length <- inqueue$length + 1))
+    eval.parent(substitute(inds$tail <- inds$tail + 1))
+    eval.parent(substitute(inds$length <- inds$length + 1))
 }
 
 
-pop.queue <- function(inqueue) {
+pop.queue <- function(inds) {
     # Check if there is an element in queue
-    if (inqueue$length == 0) {
+    if (inds$length == 0) {
         warning("Error: Queue of length 0")
         stop()
     }
     else {
         # take out element at the head
-        element <- inqueue$data[inqueue$head]
+        element <- inds$data[inds$head]
 
         # Update popped element to NA
-        eval.parent(substitute(inqueue$data[inqueue$head] <- NA))
+        eval.parent(substitute(inds$data[inds$head] <- NA))
 
         # Update length and head
-        eval.parent(substitute(inqueue$head <- inqueue$head + 1))
-        eval.parent(substitute(inqueue$length <- inqueue$length - 1))
+        eval.parent(substitute(inds$head <- inds$head + 1))
+        eval.parent(substitute(inds$length <- inds$length - 1))
         return(element)
     }
 }

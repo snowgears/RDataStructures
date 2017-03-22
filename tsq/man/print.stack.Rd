@@ -2,11 +2,10 @@
 \alias{print.stack}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Prints stack.
 %%  ~~function to do ... ~~
 }
 \description{
-Prints the elements in the stack. If the stack is empty, than nothing is outputed.
+Prints stack data structure.
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
@@ -14,7 +13,7 @@ print.stack(instack)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{instack}{ Input stack
+  \item{instack}{ Input stack.
 %%     ~~Describe \code{instack} here~~
 }
 }
@@ -44,17 +43,11 @@ print.stack(instack)
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-# Initalize stack
+# Make stack
 a <- newstack()
-# Prints empty stack. Nothing is outputted
-print(a)
-# input some data.
+# Insert items
 push(a, 1)
-push(a, 2)
 push(a, 3)
-# Prints out stack with data. Expected output: 1, 2 ,3
+# Print stack
 print(a)
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }% use one of  RShowDoc("KEYWORDS")
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+}
